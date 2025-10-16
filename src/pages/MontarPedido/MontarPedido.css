@@ -1,0 +1,169 @@
+.sidebar.close ~ .montarPedido-content {
+	position: absolute;
+	z-index: -1;
+	left:78px;
+	right: 0;
+	height: 100%;
+    transition: all 0.5s ease;
+    margin-left: 0px;
+}
+.montarPedido-container {
+  display: flex;
+}
+
+.montarPedido-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 260px; /* espaço para a sidebar */
+}
+
+.lista-cardapio {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  transition: all 0.2s ease-in-out;
+}
+
+.card-item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.card-item button {
+  background: #1f8f55;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.card-item button:hover {
+  background: #187e49;
+}
+
+.carrinho {
+  margin-top: 30px;
+  border-top: 2px solid #ccc;
+  padding-top: 15px;
+}
+
+.item-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-carrinho button {
+  margin-left: 10px;
+  background: transparent;
+  border: 1px solid #f55;
+  color: #f55;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.total {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.finalizar {
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  float: right;
+}
+
+.preco {
+  font-weight: bold;
+  margin: 4px 0;
+}
+.observacao {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.observacao label {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.observacao textarea {
+  resize: none;
+  width: 100%;
+  height: 50px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.observacao textarea:focus {
+  border-color: #888;
+}
+.busca-container {
+  margin: 10px 0 20px;
+  text-align: center;
+}
+
+.input-busca {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.select-busca {
+  border-radius: 8px;
+}
+.input-busca:focus {
+  border-color: #f28b00;
+  box-shadow: 0 0 5px rgba(242, 139, 0, 0.5);
+}
+
+.nenhum-item {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+}
+.lista-cardapio {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  transition: all 0.2s ease-in-out;
+}
+
+.card-item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.card-item:hover {
+  transform: scale(1.02);
+}
+

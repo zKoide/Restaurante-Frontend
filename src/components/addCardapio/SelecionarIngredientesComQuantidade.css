@@ -1,0 +1,104 @@
+.ingrediente-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.ingrediente-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.busca-container {
+  position: relative;
+}
+
+.busca-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.busca-input:focus {
+  border-color: #007bff;
+}
+
+.ingrediente-lista {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  list-style: none;
+  margin-top: 4px;
+  z-index: 10;
+}
+
+.ingrediente-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ingrediente-item:hover {
+  background: #f3f3f3;
+}
+
+.ingrediente-vazio {
+  padding: 8px 10px;
+  color: #999;
+  font-style: italic;
+}
+
+.ingredientes-selecionados {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.ingrediente-selecionado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.ingrediente-nome {
+  flex: 1;
+  font-size: 14px;
+}
+
+.ingrediente-qtd {
+  width: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 13px;
+}
+
+.ingrediente-remover {
+  background: none;
+  border: none;
+  color: #d33;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 6px;
+  transition: color 0.2s;
+}
+
+.ingrediente-remover:hover {
+  color: #a00;
+}

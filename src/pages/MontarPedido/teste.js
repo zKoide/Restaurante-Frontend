@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import * as Motion from "framer-motion";
+import { FaShoppingCart } from "react-icons/fa";
 
 import NavBar from "../../components/Menu/index copy";
-import "./MontarPedido.css";
-import api from "../../services/api";
+import "./teste.css";
+import {api} from "../../services/api";
 import { v4 as uuidv4 } from "uuid";
 
 export default function MontarPedido() {
@@ -17,12 +18,13 @@ export default function MontarPedido() {
     const salvo = localStorage.getItem("carrinho");
     return salvo ? JSON.parse(salvo) : [];
   });
+  const [mostrarBotaoCarrinho, setMostrarBotaoCarrinho] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function carregarCardapio() {
       try {
-        const res = await api.get("http://localhost:3333/cardapio");
+        const res = await api.get("/cardapio");
         setCardapio(res.data);
 
         const setoresUnicos = [
@@ -37,6 +39,22 @@ export default function MontarPedido() {
     }
     carregarCardapio();
   }, []);
+
+  useEffect(() => {
+    const carrinhoSection = document.querySelector(".carrinho");
+    if (!carrinhoSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setMostrarBotaoCarrinho(!entry.isIntersecting); // mostra o botão se o carrinho não estiver visível
+      },
+      { threshold: 0.1 } // considera visível se 10% do carrinho estiver na tela
+    );
+
+    observer.observe(carrinhoSection);
+
+    return () => observer.disconnect();
+  }, [carrinho, loading]);
 
   useEffect(() => {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
@@ -99,6 +117,9 @@ export default function MontarPedido() {
       console.log("Pedido criado com sucesso:", response.data);
       localStorage.removeItem("carrinho");
       setCarrinho([]);
+
+      const pedidoId = response.data.id; // supondo que a API retorna o ID do pedido
+      window.open(`/pedido/${pedidoId}`, "_blank")
     })
     .catch(function (error) {
       console.log(error);
@@ -135,7 +156,27 @@ export default function MontarPedido() {
             ))}
           </select>
         </div>
-
+        {/* Botão de rolar para o carrinho */}
+        <AnimatePresence>
+          {carrinho.length > 0 && mostrarBotaoCarrinho && (
+            <motion.button
+              className="btn-scroll-carrinho"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => {
+                const carrinhoSection = document.querySelector(".carrinho");
+                if (carrinhoSection) {
+                  window.scrollTo({ top: carrinhoSection.offsetTop-10, behavior: "smooth" });
+                  //carrinhoSection.scrollIntoView({ top: carrinhoSection.offsetTop, behavior: "smooth" });
+                }
+              }}
+            >
+              <FaShoppingCart style={{ width: "25px", height: "25px" }} />
+            </motion.button>
+          )}
+        </AnimatePresence>
         {/* Lista do cardápio com animação */}
         <div className="lista-cardapio">
           {loading ? (
@@ -179,7 +220,7 @@ export default function MontarPedido() {
         </div>
 
         {/* Carrinho */}
-        {carrinho.length > 0 && (
+        {!loading && carrinho.length > 0 && (
           <motion.div
             className="carrinho"
             initial={{ opacity: 0, y: 15 }}
@@ -200,7 +241,6 @@ export default function MontarPedido() {
                       +
                     </button>
                   </div>
-
                   <div className="observacao">
                     <label>Observação:</label>
                     <textarea
@@ -213,7 +253,7 @@ export default function MontarPedido() {
                   </div>
                 </div>
                 <div>
-                  <span>
+                  <span className="precoItem">
                     R$ {(item.preco * item.quantidade)
                       .toFixed(2)
                       .replace(".", ",")}

@@ -13,31 +13,21 @@ import MontarPedidos from './pages/MontarPedido/teste'
 import Producao from './pages/Produção/index'
 import Pedidos from './pages/Pedidos/Pedidos'
 
-import Vendas from "./pages/Vendas/Vendas"
 import Login from "./pages/Login/Login"
-import VendasForms from "./pages/VendasForms/VendasForms"
-import Orcamentos from "./pages/Orcamentos/Orcamentos"
-import OrcamentosForms from "./pages/OrcamentosForms/OrcamentosForms"
-import Test from './pages/Test/Test';
-import Agendamentos from './pages/Agendamentos/Agendamentos';
+import DetalhesPedido from './pages/DetalhesPedido/DetalhesPedido';
+import Dashboard from './pages/Dashboard/teste';
 
 const Rota = () => (
-        <Routes> 
-            <Route path="/test" element={<Test/>}/>
+        <Routes>
             <Route path="/" element={<Login/>}/>
-            <Route path="/Home" element={<Home/>}/>
+            <Route path="/Home" element={<Dashboard />}/>
             <Route path="/Ingredientes" element={<Ingredientes/>}/>
             <Route path="/Setores" element={<Setores/>}/>
             <Route path="/Cardapio" element={<Cardapio/>}/>
             <Route path="/MontarPedido" element={<MontarPedidos/>}/>
             <Route path="/Produção/:setorId" element={<Producao/>}/>
             <Route path="/Pedidos" element={<Pedidos/>}/>
-
-            <Route path="/Agendamentos" element={<Agendamentos/>}/>
-            <Route path="/Vendas" element={ <Vendas/> }/>
-            <Route path="/Vendas_Forms" element={ <VendasForms/> }/>
-            <Route path="/Orcamentos" element={ <Orcamentos/> }/>
-            <Route path="/Orcamentos_Forms" element={ <OrcamentosForms/> }/>
+            <Route path="/pedido/:id" element={<DetalhesPedido/>} />
         </Routes>
 );
 

@@ -3,7 +3,7 @@ import NavBar from '../../components/Menu/index copy';
 import {Table, TD, TH} from './styles'
 import {mask, unMask} from 'remask'
 import './cardapio.css'
-import api from '../../services/api';
+import {api} from '../../services/api';
 import * as IoIcons from "react-icons/io5"
 import * as FaIcons from "react-icons/fa"
 import AddAndListMenu from '../../components/idk';

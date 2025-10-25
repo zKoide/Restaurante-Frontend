@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Form, Container } from "./styles";
 import { Link } from "react-router-dom";
 
-import api from "../../services/api";
+import {api} from "../../services/api";
 import { login, getToken } from "../../services/auth";
 import Logo from "../../assets/logo.png";
+import { logout } from "../../services/auth";
 
 
 
@@ -16,12 +17,23 @@ function Login(){
     const [error, seterror] = useState('');
     
     useEffect(() => {
-      document.title = "Login - Vistoria Vision Car"
-      let token = getToken()
-      if(token){
-        document.location.href = "./home";
-      }
+      document.title = "Login"
+      id();
     },[]);
+    async function id(){
+      await api.post("/userinf")
+        .then(function (response) {
+          document.location.href = "./home";
+        })
+        .catch(function (error) {
+          if (error.response && error.response.status === 401) {
+          console.warn("Token expirado ou inválido. Fazendo logout...");
+          logout();
+        } else {
+          console.error("Erro ao buscar informações do usuário:", error);
+        }
+      });
+    }
 
     useEffect(() => {
       seterror('');

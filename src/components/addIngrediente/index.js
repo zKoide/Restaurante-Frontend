@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import api from '../../services/api'
+import {api} from '../../services/api'
 
 import { Container, Overlay } from "./styles";
 
@@ -42,11 +42,14 @@ function Ingrediente(data){
     }
 
     async function findIngrediente() {
-         console.log(data.id)
+        console.log(data.id)
+        if(data.id != null){
+           console.log(data.id)
            const ingrediente = await api.get("/ingrediente/"+data.id)
            setNomeIngrediente(ingrediente.data.nome)
            setUnidadeMedida(ingrediente.data.unidade)
            setIsActive(ingrediente.data.ativo)
+        }
     }
     async function addAgendamento(e){
         if(data.id){
@@ -150,7 +153,7 @@ function Ingrediente(data){
                                                         data.id ? (
                                                             <div className="hed">
                                                                 <div className="FuxyEF">Ingrediente ativo: </div>
-                                                                <input className="item" type="checkbox" id="pagamento" display="false"/>
+                                                                <input className="itemComp" type="checkbox" id="pagamento" display="false"/>
                                                                 <label className="PNJbib" for="pagamento">
                                                                     <div className="alinhamentoseletor" onClick={checkPagamentoByLojista} aria-checked={IsActive}>
                                                                         <div className="barra corBarra"></div>

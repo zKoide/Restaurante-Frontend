@@ -4,8 +4,11 @@ import * as GiIcons from 'react-icons/gi'
 import * as FaIcons from 'react-icons/fa'
 import * as BiIcons from 'react-icons/bi'
 import * as AiIcons from 'react-icons/ai'
-import api from '../../services/api';
+import {api} from '../../services/api';
 import { logout } from "../../services/auth";
+
+
+import userImg from "../../assets/user-png.png";
 
 
 
@@ -20,14 +23,10 @@ import { CgOverflow } from 'react-icons/cg'
 
 function NavBar(){
 
-    
-    const [Id, setId] = useState('');
-    const [largura, setlargura] = useState();
+    const [User, setUser] = useState("");
 
     useEffect(() => {
         id()
-        console.log(Id)
-
       },[]);
 
     const [closed, setClosed] = useState(true)
@@ -37,10 +36,16 @@ function NavBar(){
     async function id(){
         await api.post("/userinf")
         .then(function (response) {
-          setId(response.data);
+            setUser(response.data)
         })
         .catch(function (error) {
-            console.log("error")
+            if (error.response && error.response.status === 401) {
+            console.warn("Token expirado ou inválido. Fazendo logout...");
+            logout();
+            window.location.href = "/"; // volta para tela de login
+            } else {
+            console.error("Erro ao buscar informações do usuário:", error);
+            }
         });
       }
     
@@ -72,10 +77,10 @@ function NavBar(){
                     <li>
                         <div className="profile-details">
                             <div className="profile-content">
-                                <img src="profile.jpg" alt="profile"/>
+                                <img src={userImg} alt="profile"/>
                             </div>
                             <div className="name-job">
-                                <div className="profile-name">Alexandre Nunes</div>
+                                <div className="profile-name">{User.nome}</div>
                             </div>
                             <i className="bx bx-log-out" >
                                 <BiIcons.BiLogOut style={iconMenuStyles} 

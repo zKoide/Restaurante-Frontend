@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NavBar from '../../components/Menu/index copy';
 import "./MontarPedido.css"; // arquivo CSS simples para layout
-import api from "../../services/api";
+import {api, baseURL} from "../../services/api";
 
 export default function MontarPedido() {
   const [cardapio, setCardapio] = useState([]);

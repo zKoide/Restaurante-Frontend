@@ -326,13 +326,13 @@ input {
     top: 3px;
     width: 37px;
 }
-.item{
+.itemComp{
     display: none;
 }
-.item:checked > .corBarra {
+.itemComp:checked > .corBarra {
     background-color: rgba(26,115,232,0.2);
 }
-.item:checked + .circulo {
+.itemComp:checked + .circulo {
     border: 10px solid #1a73e8;
 }
 .alinhamentoseletor.N2RpBe>.rbsY8b {

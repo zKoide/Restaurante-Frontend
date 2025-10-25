@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import api from '../../services/api'
+import {api} from '../../services/api'
 
 import { Container, Overlay, Form, Close } from "./styles";
 
@@ -203,7 +203,7 @@ function Cardapio(data){
                                                         data.id ? (
                                                             <div className="hed">
                                                                 <div className="FuxyEF">Item ativo: </div>
-                                                                <input className="item" type="checkbox" id="pagamento" display="false"/>
+                                                                <input className="itemComp" type="checkbox" id="pagamento" display="false"/>
                                                                 <label className="PNJbib" for="pagamento">
                                                                     <div className="alinhamentoseletor" onClick={checkIsActive} aria-checked={IsActive}>
                                                                         <div className="barra corBarra"></div>

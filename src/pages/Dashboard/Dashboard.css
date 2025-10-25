@@ -1,0 +1,86 @@
+.dashboard-container {
+  display: flex;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 260px;
+}
+
+.dashboard-indicadores {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.indicador {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1;
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.indicador h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.indicador p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1f8f55;
+}
+
+.dashboard-graficos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.grafico-bar, .grafico-pie {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1;
+  min-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.grafico-bar h4, .grafico-pie h4 {
+  margin-bottom: 15px;
+  color: #333;
+}
+/* ===================== Sidebar ===================== */
+.sidebar.close ~ .dashboard-content {
+  position: absolute;
+  z-index: -1;
+  left: 78px;
+  right: 0;
+  height: 100%;
+  transition: all 0.5s ease;
+  margin-left: 0px;
+}
+
+/* ================= Mobile ================= */
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 10px;
+    margin-top: 78px;
+  }
+
+  .sidebar.close ~ .dashboard-content {
+    left: 0px;
+  }
+
+  .dashboard-indicadores, .dashboard-graficos {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

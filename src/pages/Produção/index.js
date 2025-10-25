@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
-import api from "../../services/api";
+import {api, baseURL} from "../../services/api";
 import "./style.css";
 
 export default function Producao() {
@@ -14,7 +14,7 @@ export default function Producao() {
     buscarPedidos();
 
     // 🔌 Conecta ao WebSocket
-    const socket = io("http://localhost:3333"); // troque para seu backend
+    const socket = io(baseURL); // troque para seu backend
 
     // Recebe novos pedidos em tempo real
     socket.on("novoPedido", (novoPedido) => {

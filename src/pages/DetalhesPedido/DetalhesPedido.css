@@ -1,0 +1,143 @@
+.detalhes-pedido-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.topo-detalhes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.voltar, .imprimir {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #eee;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.voltar:hover {
+  background: #ddd;
+}
+
+h2 {
+  margin-bottom: 8px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.status.recebido {background: #f59e0b;}
+.status.em_preparo { background: #f59e0b; }
+.status.pendente { background: #f59e0b; }
+.status.pronto { background: #16a34a; }
+.status.entregue { background: #16a34a; }
+.status.cancelado { background: #f01212; }
+
+.itens-pedido {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-pedido {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.item-info strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.item-info .observacao {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.item-quantidade {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-quantidade .subtotal {
+  font-weight: bold;
+}
+
+.total-geral {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+/* ===================== Mobile ===================== */
+@media (max-width: 768px) {
+  .detalhes-pedido-container {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  .voltar {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+
+  .itens-pedido {
+    gap: 10px;
+  }
+
+  .item-pedido {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .item-quantidade {
+    text-align: right;
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .total-geral {
+    text-align: left;
+    font-size: 1.1rem;
+  }
+}
+/* Oculta botões e elementos não necessários na impressão */
+@media print {
+  .voltar,
+  .imprimir {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .detalhes-pedido-container {
+    box-shadow: none;
+    border: none;
+  }
+}

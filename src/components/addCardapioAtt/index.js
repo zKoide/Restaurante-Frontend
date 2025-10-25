@@ -187,7 +187,6 @@ function Cardapio(data){
                                                     onChange={(ingredientes) => setIngredientesSelecionados(ingredientes)}
                                                     />
                                                 </div>
-                                                {console.log(ingredientesSelecionados)}
                                                 {
                                                     //botão para cadastrar
                                                 }

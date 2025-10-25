@@ -1,10 +1,12 @@
 import axios from "axios";
 import { getToken } from "./auth";
 
+const baseURL = 'http://192.168.1.2:3333'
+
 const api = axios.create({
     //baseURL: 'http://api.malcolmdesmonte.com.br/'
     //baseURL: 'http://localhost:3333/'
-    baseURL: 'http://192.168.1.4:3333'
+    baseURL
 });
 
 api.interceptors.request.use(
@@ -16,4 +18,4 @@ api.interceptors.request.use(
         return Promise.reject(error);
     }
 );
-export default api;
+export { api, baseURL};

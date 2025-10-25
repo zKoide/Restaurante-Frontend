@@ -16,6 +16,7 @@ import Pedidos from './pages/Pedidos/Pedidos'
 import Login from "./pages/Login/Login"
 import DetalhesPedido from './pages/DetalhesPedido/DetalhesPedido';
 import Dashboard from './pages/Dashboard/teste';
+import Admin from './pages/Admin/Admin';
 
 const Rota = () => (
         <Routes>
@@ -28,6 +29,7 @@ const Rota = () => (
             <Route path="/Produção/:setorId" element={<Producao/>}/>
             <Route path="/Pedidos" element={<Pedidos/>}/>
             <Route path="/pedido/:id" element={<DetalhesPedido/>} />
+            <Route path="/add" element={<Admin/>} />
         </Routes>
 );
 

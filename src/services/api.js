@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./auth";
 
-const baseURL = 'http://localhost:3333'
+const baseURL = 'http://144.22.142.26:3333'
 
 const api = axios.create({
     //baseURL: 'http://api.malcolmdesmonte.com.br/'

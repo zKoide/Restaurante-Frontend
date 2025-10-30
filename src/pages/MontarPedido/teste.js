@@ -3,11 +3,15 @@ import * as Motion from "framer-motion";
 import { FaShoppingCart } from "react-icons/fa";
 
 import NavBar from "../../components/Menu/index copy";
+
+import ModalAcai from "./modalAcai";
 import "./teste.css";
 import {api} from "../../services/api";
 import { v4 as uuidv4 } from "uuid";
 
 export default function MontarPedido() {
+  const [acaiModalAberto, setAcaiModalAberto] = useState(false);
+
   
   const { motion, AnimatePresence } = Motion;
   const [cardapio, setCardapio] = useState([]);
@@ -20,6 +24,7 @@ export default function MontarPedido() {
   });
   const [mostrarBotaoCarrinho, setMostrarBotaoCarrinho] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [itemSelecionado, setItemSelecionado] = useState("");
 
   useEffect(() => {
     async function carregarCardapio() {
@@ -60,6 +65,10 @@ export default function MontarPedido() {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
   }, [carrinho]);
 
+  function openModal(item){
+    setItemSelecionado(item)
+    setAcaiModalAberto(true);
+  }
   const adicionarAoCarrinho = (item) => {
     const novoItem = {
       uuid: uuidv4(),
@@ -208,9 +217,11 @@ export default function MontarPedido() {
                     </small>
                   )}
                 </div>
-                <button onClick={() => adicionarAoCarrinho(item)}>
-                  Adicionar +
-                </button>
+                {item.nome.toLowerCase().includes("açaí") ? (
+                  <button onClick={() => openModal(item) }>Montar Açaí</button>
+                ) : (
+                  <button onClick={() => adicionarAoCarrinho(item)}>Adicionar +</button>
+                )}
               </motion.div>
             ))}
           </AnimatePresence> 
@@ -277,6 +288,13 @@ export default function MontarPedido() {
             </button>
           </motion.div>
         )}
+        <ModalAcai
+          aberto={acaiModalAberto}
+          onClose={() => setAcaiModalAberto(false)}
+          onAdd={(novoItem) => setCarrinho([...carrinho, novoItem])}
+          item={itemSelecionado}
+        />
+
       </div>
     </div>
   );

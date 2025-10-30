@@ -7,7 +7,8 @@ import * as RiIcons from 'react-icons/ri'
 import * as CgIcons from "react-icons/cg"
 import * as FaIcons from 'react-icons/fa'
 import * as GrIcons from 'react-icons/gr'
-import * as TbIcons from "react-icons/tb";
+import * as MdIcons from "react-icons/md";
+
 
 let iconMenuStyles = {
     height: "20px",
@@ -25,6 +26,12 @@ export const SidebarData = [
         title:'Montar Pedido',
         path:'/MontarPedido',
         icon: <FaIcons.FaShoppingCart style={iconMenuStyles}/>,
+        cName: 'nav-text'
+    },
+    {
+        title:'Pedidos',
+        path:'/Pedidos',
+        icon: <MdIcons.MdOutlineShoppingBag  style={iconMenuStyles}/>,
         cName: 'nav-text'
     },
     {

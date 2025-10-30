@@ -15,7 +15,7 @@ export default function ModalAcai({ aberto, onClose, onAdd, item }) {
 
   // 🔹 Busca dados do açaí do backend
   useEffect(() => {
-    console.log(item)
+    
     setAcaiData(item)
     async function carregarDadosAcai() {
       try {
@@ -56,7 +56,6 @@ export default function ModalAcai({ aberto, onClose, onAdd, item }) {
       ? 7
       : 0;
 
-    console.log(nutellaExtra)
     total += Number(precoExtrasFrutas) + Number(precoExtrasAcomp) + Number(nutellaExtra);
     
     setPrecoFinal(total);
@@ -65,17 +64,17 @@ export default function ModalAcai({ aberto, onClose, onAdd, item }) {
   if (!aberto) return null;
 
   const toggleSelecionado = (lista, setLista, item) => {
-    console.log(item)
+    
     setLista((prev) =>
       prev.some((i) => i.ingrediente.id === item.ingrediente.id)
         ? prev.filter((i) => i.ingrediente.id !== item.ingrediente.id)
         : [...prev, item]
     );
-    console.log(lista)
+    
   };
 
   const handleConfirmar = () => {
-    console.log(frutasSelecionadas)
+    
     if (!tamanhoSelecionado) return alert("Selecione um tamanho!");
     const novoItem = {
       uuid: uuidv4(),
@@ -254,7 +253,6 @@ export default function ModalAcai({ aberto, onClose, onAdd, item }) {
               {/* PREÇO FINAL */}
               {tamanhoSelecionado && (
                 
-                console.log(precoFinal),
                 <div className="preco-final">
                   <h3>Total: R$ {Number(precoFinal).toFixed(2)}</h3>
                 </div>

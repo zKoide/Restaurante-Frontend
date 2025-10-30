@@ -15,7 +15,7 @@ export default function ModalAcai({ aberto, onClose, onAdd, item }) {
 
   // 🔹 Busca dados do açaí do backend
   useEffect(() => {
-    
+    console.log(item)
     setAcaiData(item)
     async function carregarDadosAcai() {
       try {
@@ -127,6 +127,7 @@ export default function ModalAcai({ aberto, onClose, onAdd, item }) {
               <div className="secao">
                 <h4>Tamanho</h4>
                 <div className="opcoes">
+                  {console.log(acaiData)}
                   {acaiData?.prodVariacao?.map((v) => (
                     <button
                       key={v.id}

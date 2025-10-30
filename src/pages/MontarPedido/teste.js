@@ -31,7 +31,7 @@ export default function MontarPedido() {
       try {
         const res = await api.get("/cardapio");
         setCardapio(res.data);
-
+        console.log(res.data)
         const setoresUnicos = [
           ...new Map(res.data.map((i) => [i.setor?.id, i.setor])).values(),
         ].filter(Boolean);
